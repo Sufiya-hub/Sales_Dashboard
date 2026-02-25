@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema(
       enum: ['user', 'admin'],
       default: 'user',
     },
-    // New fields to support MOCK_DATA.json and Analytics
+
     age: {
       type: Number,
     },
@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-  { timestamps: true } // Automatically adds createdAt and updatedAt
+  { timestamps: true }
 );
 
 module.exports = mongoose.model('User', UserSchema);

@@ -3,9 +3,6 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 
-/**
- * Middleware to restrict access to Admins only.
- */
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
@@ -14,11 +11,6 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-/**
- * @route   GET /api/metrics/dashboard
- * @desc    Get dashboard stats + chart data
- * @access  Private/Admin
- */
 router.get('/dashboard', auth, async (req, res) => {
   try {
     const totalUsers = await User.countDocuments();

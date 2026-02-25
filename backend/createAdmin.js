@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const User = require('./models/User'); // Correct path from root
-const connectDB = require('./config/db'); // Correct path from root
+const User = require('./models/User');
+const connectDB = require('./config/db');
 
 connectDB();
 
 const createAdmin = async () => {
   try {
-    // Check if admin already exists to avoid duplicates
     const existingAdmin = await User.findOne({ email: 'admin@dashboard.com' });
     if (existingAdmin) {
       console.log('Admin already exists!');
@@ -21,7 +20,7 @@ const createAdmin = async () => {
       name: 'Super Admin',
       email: 'admin@dashboard.com',
       password: hashedPassword,
-      role: 'admin', // This is what unlocks the charts!
+      role: 'admin',
       status: 'Active',
       sales_amount: 0,
       signup_date: new Date(),

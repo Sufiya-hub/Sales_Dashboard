@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 
-// Build connection string dynamically from environment variables. This makes
-// it easy to switch between localhost, Atlas, or credentials without
-// modifying code. Examples for .env below.
 function buildUri() {
   if (process.env.MONGO_URI) {
-    return process.env.MONGO_URI; // explicit string provided
+    return process.env.MONGO_URI;
   }
   const host = process.env.MONGO_HOST || 'localhost';
   const port = process.env.MONGO_PORT || '27017';
-  // database name is fixed to "dashboard" per project requirements
+
   const db = 'dashboard';
   const user = process.env.MONGO_USER;
   const pass = process.env.MONGO_PASS;
@@ -26,7 +23,6 @@ const uri = buildUri();
 
 const connectDB = async () => {
   try {
-    // Simplified for modern Mongoose versions
     await mongoose.connect(uri);
     console.log('MongoDB connected successfully to: ' + uri);
   } catch (err) {

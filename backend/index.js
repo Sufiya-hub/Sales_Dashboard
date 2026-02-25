@@ -7,14 +7,11 @@ const metricsRoutes = require('./routes/metrics');
 
 const app = express();
 
-// connect to MongoDB
 connectDB();
 
-// middleware
 app.use(cors());
 app.use(express.json());
 
-// routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/metrics', require('./routes/metrics'));

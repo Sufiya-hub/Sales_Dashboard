@@ -162,6 +162,8 @@ You can register an admin manually or insert in DB:
 }
 ```
 
+## After logging in into the dashboard click on refresh data to see the changes in charts and donut.
+
 ---
 
 ## API Endpoints
